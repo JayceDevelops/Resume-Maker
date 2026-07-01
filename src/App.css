@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --font-ui: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-resume-modern: 'Inter', system-ui, sans-serif;
+  
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-extrabold: 800;
+
+  --bg-background: #F8FAFC;
+  --bg-secondary: #FFFFFF;
+
+  --primary-text: #0F172A;
+  --secondary-text: #475569;
+
+  --buttons: #4F46E5;
+
+  --borders: #E2E8F0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+
+  font-family: var(--font-ui);
+}
