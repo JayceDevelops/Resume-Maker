@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 
 import Menu from './components/Menu';
+import Contact from './components/Contact';
 
 function App() {
 
@@ -23,6 +24,11 @@ function App() {
   if (screen === 'start'){
     return (
       <Menu setScreen={setScreen}/>
+    );
+  }
+  else if (screen === 'contact'){
+    return (
+      <Contact />
     );
   }
 }
