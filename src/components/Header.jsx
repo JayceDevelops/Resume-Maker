@@ -4,16 +4,15 @@ import Bar from './Bar';
 
 export default function Header({type, step, text}) {
 
-    let icon = '';
     let actives = [false, false, false, false];
 
-    if (type === 'contact'){
+    if (step === 1){
         actives = [true, false, false, false];
     }
-    else if (type === 'education'){
+    else if (step === 2){
         actives = [true, true, false, false];
     }
-    else if (type === 'experience'){
+    else if (step === 3){
         actives = [true, true, true, false];
     }
     else {
