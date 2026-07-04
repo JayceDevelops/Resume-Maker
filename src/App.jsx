@@ -2,33 +2,54 @@ import { useState } from 'react'
 import './App.css'
 
 import Menu from './components/Menu';
-import Contact from './components/Contact';
+
+import Header from './components/Header';
+import Form from './components/Form';
 
 function App() {
 
-  const [screen, setScreen] = useState('start');
+  const [step, setStep] = useState(1);
+  const [text, setText] = useState('Contact Information');
+  const [form, setForm] = useState('start');
 
-  let data = {
-    FName: '',
-    LName: '',
-    Email: '',
-    Phone: '',
+  const [data, setData] = useState({
+    fName: '',
+    lName: '',
+    email: '',
+    phone: '',
     location: '',
     linkedin: '',
     website: '',
     github: '',
     education: [],
     experience: []
-  };
+  });
 
-  if (screen === 'start'){
+  if (form === 'start'){
     return (
-      <Menu setScreen={setScreen}/>
+      <Menu setForm={setForm}/>
     );
   }
-  else if (screen === 'contact'){
+  else {
+
+    if (form === 'education'){
+      setStep(2);
+      setText('Education');
+    }
+    else if (form === 'experience'){
+      setStep(3);
+      setText('Work Experience');
+    }
+    else if (form === 'complete'){
+      setStep(4);
+      setText('Your resume is ready');
+    }
+
     return (
-      <Contact />
+      <>
+        <Header step={step} text={text}/>
+        <Form type={form} data={data} setData={setData}/>
+      </>
     );
   }
 }

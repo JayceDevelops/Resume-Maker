@@ -4,10 +4,10 @@ import CV from '../assets/CV.svg';
 import Button from './Button';
 
 
-export default function Menu({setScreen}) {
+export default function Menu({setForm}) {
 
     const startedClicked = () => {
-        setScreen('contact');
+        setForm('contact');
     };
 
     return (

@@ -1,6 +1,10 @@
-import '../styles/Form.css';
+import Contact from './Contact';
 
-export default function Form({type}) {
+export default function Form({type, data, setData}) {
 
-    
+    if (type === 'contact'){
+        return (
+            <Contact data={data} setData={setData}/>
+        );
+    }
 }

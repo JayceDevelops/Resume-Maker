@@ -1,0 +1,15 @@
+.contactHolder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 80vh;
+}
+.contact {
+    display: grid;
+    grid-template-columns: auto auto;
+
+    gap: 5rem;
+    
+    width: 80%;
+}
