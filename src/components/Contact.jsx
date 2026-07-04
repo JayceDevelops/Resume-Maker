@@ -13,6 +13,17 @@ export default function Contact({data, setData}) {
     const [Portfolio, setPortfolio] = useState(data.website);
     const [Github, setGithub] = useState(data.github);
 
+    const [FNameError, setFNameError] = useState('');
+    const [LNameError, setLNameError] = useState('');
+    const [EmailError, setEmailError] = useState('');
+    const [PhoneError, setPhoneError] = useState('');
+    const [LocationError, setLocationError] = useState('');
+    const [LinkedInError, setLinkedInError] = useState('');
+    const [PortfolioError, setPortfolioError] = useState('');
+    const [GithubError, setGithubError] = useState('');
+
+
+
     // Functions used to keep track of inputs
     const fNameChange = (e) => {
         setFName(e.target.value);
@@ -47,18 +58,21 @@ export default function Contact({data, setData}) {
     };
 
     // functions used to validate each input
+    const validate = (type) => {
+
+    };
 
     return (
         <div className="contactHolder">
             <form className='contact'>
-                <Input lblText={'First Name'} value={FName} placeholder={'John'} onChange={fNameChange}/>
-                <Input lblText={'Last Name'} value={LName} placeholder={'Smith'} onChange={lNameChange}/>
-                <Input lblText={'Email'} value={Email} placeholder={'name@emai.com'} onChange={emailChange}/>
-                <Input lblText={'Phone'} value={Phone} placeholder={'(123) 456-7890'} onChange={phoneChange}/>
-                <Input lblText={'Location'} value={Location} placeholder={'Portland, OR'} onChange={locationChange}/>
-                <Input lblText={'LinkedIn'} value={LinkedIn} placeholder={'linkedin.com/in/johnsmith'} onChange={linkedInChange}/>
-                <Input lblText={'Portfolio'} value={Portfolio} placeholder={'johnsmith.com'} onChange={portfolioChange}/>
-                <Input lblText={'Github'} value={Github} placeholder={'github.com/johnsmith'} onChange={githubChange}/>
+                <Input lblText={'First Name'} value={FName} placeholder={'John'} onChange={fNameChange} onBlur={validate('fname')} errorText={FNameError}/>
+                <Input lblText={'Last Name'} value={LName} placeholder={'Smith'} onChange={lNameChange} onBlur={validate('fname')} errorText={LNameError}/>
+                <Input lblText={'Email'} value={Email} placeholder={'name@email.com'} onChange={emailChange} onBlur={validate('fname')} errorText={EmailError}/>
+                <Input lblText={'Phone'} value={Phone} placeholder={'(123) 456-7890'} onChange={phoneChange} onBlur={validate('fname')} errorText={PhoneError}/>
+                <Input lblText={'Location'} value={Location} placeholder={'Portland, OR'} onChange={locationChange} onBlur={validate('fname')} errorText={LocationError}/>
+                <Input lblText={'LinkedIn'} value={LinkedIn} placeholder={'linkedin.com/in/johnsmith'} onChange={linkedInChange} onBlur={validate('fname')} errorText={LinkedInError}/>
+                <Input lblText={'Portfolio'} value={Portfolio} placeholder={'johnsmith.com'} onChange={portfolioChange} onBlur={validate('fname')} errorText={PortfolioError}/>
+                <Input lblText={'Github'} value={Github} placeholder={'github.com/johnsmith'} onChange={githubChange} onBlur={validate('fname')} errorText={GithubError}/>
             </form>
         </div>
     );
