@@ -58,21 +58,93 @@ export default function Contact({data, setData}) {
     };
 
     // functions used to validate each input
-    const validate = (type) => {
 
+    const validateFName = () => {
+        if (FName.length > 0 && FName.length < 3){
+            setFNameError('Invalid First Name');
+        }
+        else {
+            setFNameError('');
+        }
     };
+
+    const validateLName = () => {
+        if (LName.length > 0 && LName.length < 3){
+            setLNameError('Invalid Last Name');
+        }
+        else {
+            setLNameError('');
+        }
+    };
+
+    const validateEmail = () => {
+        
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!emailRegex.test(Email.trim()) && Email.length > 0){
+            setEmailError('Invalid Email Address');
+        }
+        else {
+            setEmailError('');
+        }
+    };
+
+    const validatePhone = () => {
+        const phoneRegex = /^(\+1[\s.-]?)?(\(\d{3}\)|\d{3})[\s.-]?\d{3}[\s.-]?\d{4}$/;
+
+        if (!phoneRegex.test(Phone.trim()) && Phone.length > 0){
+            setPhoneError('Invalid Phone Number');
+        }
+        else {
+            setPhoneError('');
+        }
+    };
+
+    const validateLocation = () => {
+        const locationRegex = /^[A-Za-z][A-Za-z\s.'-]*,\s(Alabama|AL|Alaska|AK|Arizona|AZ|Arkansas|AR|California|CA|Colorado|CO|Connecticut|CT|Delaware|DE|Florida|FL|Georgia|GA|Hawaii|HI|Idaho|ID|Illinois|IL|Indiana|IN|Iowa|IA|Kansas|KS|Kentucky|KY|Louisiana|LA|Maine|ME|Maryland|MD|Massachusetts|MA|Michigan|MI|Minnesota|MN|Mississippi|MS|Missouri|MO|Montana|MT|Nebraska|NE|Nevada|NV|New Hampshire|NH|New Jersey|NJ|New Mexico|NM|New York|NY|North Carolina|NC|North Dakota|ND|Ohio|OH|Oklahoma|OK|Oregon|OR|Pennsylvania|PA|Rhode Island|RI|South Carolina|SC|South Dakota|SD|Tennessee|TN|Texas|TX|Utah|UT|Vermont|VT|Virginia|VA|Washington|WA|West Virginia|WV|Wisconsin|WI|Wyoming|WY)$/i;
+        if (!locationRegex.test(Location.trim()) && Location.length > 0){
+            setLocationError('Invalid Location');
+        }
+        else {
+            setLocationError('');
+        }
+    };
+
+    const validateLinkedIn = () => {
+        const linkedinRegex = /^(https?:\/\/)?(www\.)?linkedin\.com\/in\/[a-zA-Z0-9](?:[a-zA-Z0-9-]{1,98}[a-zA-Z0-9])?\/?$/;
+
+        if (!linkedinRegex.test(LinkedIn.trim()) && LinkedIn.length > 0){
+            setLinkedInError('Invalid LinkedIn Link');
+        }
+        else {
+            setLinkedInError('');
+        }
+    };
+
+    const validateGithub = () => {
+        const githubRegex = /^(https?:\/\/)?(www\.)?github\.com\/[a-zA-Z0-9](?:-?[a-zA-Z0-9]){0,38}\/?$/;
+
+        if (!githubRegex.test(Github.trim()) && Github.length > 0){
+            setGithubError('Invalid Github Link');
+        }
+        else {
+            setGithubError('');
+        }
+    }
+
+
+
 
     return (
         <div className="contactHolder">
             <form className='contact'>
-                <Input lblText={'First Name'} value={FName} placeholder={'John'} onChange={fNameChange} onBlur={validate('fname')} errorText={FNameError}/>
-                <Input lblText={'Last Name'} value={LName} placeholder={'Smith'} onChange={lNameChange} onBlur={validate('fname')} errorText={LNameError}/>
-                <Input lblText={'Email'} value={Email} placeholder={'name@email.com'} onChange={emailChange} onBlur={validate('fname')} errorText={EmailError}/>
-                <Input lblText={'Phone'} value={Phone} placeholder={'(123) 456-7890'} onChange={phoneChange} onBlur={validate('fname')} errorText={PhoneError}/>
-                <Input lblText={'Location'} value={Location} placeholder={'Portland, OR'} onChange={locationChange} onBlur={validate('fname')} errorText={LocationError}/>
-                <Input lblText={'LinkedIn'} value={LinkedIn} placeholder={'linkedin.com/in/johnsmith'} onChange={linkedInChange} onBlur={validate('fname')} errorText={LinkedInError}/>
-                <Input lblText={'Portfolio'} value={Portfolio} placeholder={'johnsmith.com'} onChange={portfolioChange} onBlur={validate('fname')} errorText={PortfolioError}/>
-                <Input lblText={'Github'} value={Github} placeholder={'github.com/johnsmith'} onChange={githubChange} onBlur={validate('fname')} errorText={GithubError}/>
+                <Input lblText={'First Name'} value={FName} placeholder={'John'} onChange={fNameChange} onBlur={validateFName} errorText={FNameError}/>
+                <Input lblText={'Last Name'} value={LName} placeholder={'Smith'} onChange={lNameChange} onBlur={validateLName} errorText={LNameError}/>
+                <Input lblText={'Email'} value={Email} placeholder={'name@email.com'} onChange={emailChange} onBlur={validateEmail} errorText={EmailError}/>
+                <Input lblText={'Phone'} value={Phone} placeholder={'(123) 456-7890'} onChange={phoneChange} onBlur={validatePhone} errorText={PhoneError}/>
+                <Input lblText={'Location (optional)'} value={Location} placeholder={'Portland, OR'} onChange={locationChange} onBlur={validateLocation} errorText={LocationError}/>
+                <Input lblText={'LinkedIn (optional)'} value={LinkedIn} placeholder={'linkedin.com/in/johnsmith'} onChange={linkedInChange} onBlur={validateLinkedIn} errorText={LinkedInError}/>
+                <Input lblText={'Portfolio (optional)'} value={Portfolio} placeholder={'johnsmith.com'} onChange={portfolioChange} errorText={PortfolioError}/>
+                <Input lblText={'Github (optional)'} value={Github} placeholder={'github.com/johnsmith'} onChange={githubChange} onBlur={validateGithub} errorText={GithubError}/>
             </form>
         </div>
     );
