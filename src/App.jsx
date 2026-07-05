@@ -5,11 +5,16 @@ import Menu from './components/Menu';
 
 import Header from './components/Header';
 import Form from './components/Form';
+import Footer from './components/Footer';
+
+const STEP_MAP = {
+  contact: { step: 1, text: 'Contact Information' },
+  education: { step: 2, text: 'Education' },
+  experience: { step: 3, text: 'Work Experience' },
+  complete: { step: 4, text: 'Your resume is ready' },
+};
 
 function App() {
-
-  const [step, setStep] = useState(1);
-  const [text, setText] = useState('Contact Information');
   const [form, setForm] = useState('start');
 
   const [data, setData] = useState({
@@ -32,23 +37,13 @@ function App() {
   }
   else {
 
-    if (form === 'education'){
-      setStep(2);
-      setText('Education');
-    }
-    else if (form === 'experience'){
-      setStep(3);
-      setText('Work Experience');
-    }
-    else if (form === 'complete'){
-      setStep(4);
-      setText('Your resume is ready');
-    }
+    const {step, text} = STEP_MAP[form] ?? STEP_MAP.contact;
 
     return (
       <>
         <Header step={step} text={text}/>
         <Form type={form} data={data} setData={setData}/>
+        <Footer data={data} form={form} setForm={setForm}/>
       </>
     );
   }

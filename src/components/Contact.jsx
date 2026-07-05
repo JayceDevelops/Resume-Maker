@@ -57,23 +57,26 @@ export default function Contact({data, setData}) {
         setGithub(e.target.value);
     };
 
-    // functions used to validate each input
-
+    // functions used to validate each input & Saves it to the data object
     const validateFName = () => {
         if (FName.length > 0 && FName.length < 3){
             setFNameError('Invalid First Name');
+            setData({...data, fName: ''});
         }
         else {
             setFNameError('');
+            setData({...data, fName: FName});
         }
     };
 
     const validateLName = () => {
         if (LName.length > 0 && LName.length < 3){
             setLNameError('Invalid Last Name');
+            setData({...data, lName: ''});
         }
         else {
             setLNameError('');
+            setData({...data, lName: LName});
         }
     };
 
@@ -82,9 +85,11 @@ export default function Contact({data, setData}) {
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         if (!emailRegex.test(Email.trim()) && Email.length > 0){
             setEmailError('Invalid Email Address');
+            setData({...data, email: ''});
         }
         else {
             setEmailError('');
+            setData({...data, email: Email});
         }
     };
 
@@ -93,9 +98,11 @@ export default function Contact({data, setData}) {
 
         if (!phoneRegex.test(Phone.trim()) && Phone.length > 0){
             setPhoneError('Invalid Phone Number');
+            setData({...data, phone: ''});
         }
         else {
             setPhoneError('');
+            setData({...data, phone: Phone});
         }
     };
 
@@ -103,9 +110,11 @@ export default function Contact({data, setData}) {
         const locationRegex = /^[A-Za-z][A-Za-z\s.'-]*,\s(Alabama|AL|Alaska|AK|Arizona|AZ|Arkansas|AR|California|CA|Colorado|CO|Connecticut|CT|Delaware|DE|Florida|FL|Georgia|GA|Hawaii|HI|Idaho|ID|Illinois|IL|Indiana|IN|Iowa|IA|Kansas|KS|Kentucky|KY|Louisiana|LA|Maine|ME|Maryland|MD|Massachusetts|MA|Michigan|MI|Minnesota|MN|Mississippi|MS|Missouri|MO|Montana|MT|Nebraska|NE|Nevada|NV|New Hampshire|NH|New Jersey|NJ|New Mexico|NM|New York|NY|North Carolina|NC|North Dakota|ND|Ohio|OH|Oklahoma|OK|Oregon|OR|Pennsylvania|PA|Rhode Island|RI|South Carolina|SC|South Dakota|SD|Tennessee|TN|Texas|TX|Utah|UT|Vermont|VT|Virginia|VA|Washington|WA|West Virginia|WV|Wisconsin|WI|Wyoming|WY)$/i;
         if (!locationRegex.test(Location.trim()) && Location.length > 0){
             setLocationError('Invalid Location');
+            setData({...data, location: ''});
         }
         else {
             setLocationError('');
+            setData({...data, location: Location});
         }
     };
 
@@ -114,9 +123,11 @@ export default function Contact({data, setData}) {
 
         if (!linkedinRegex.test(LinkedIn.trim()) && LinkedIn.length > 0){
             setLinkedInError('Invalid LinkedIn Link');
+            setData({...data, linkedin: ''});
         }
         else {
             setLinkedInError('');
+            setData({...data, linkedin: LinkedIn});
         }
     };
 
@@ -125,9 +136,11 @@ export default function Contact({data, setData}) {
 
         if (!githubRegex.test(Github.trim()) && Github.length > 0){
             setGithubError('Invalid Github Link');
+            setData({...data, github: ''});
         }
         else {
             setGithubError('');
+            setData({...data, github: Github});
         }
     }
 

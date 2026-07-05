@@ -51,3 +51,10 @@
 body {
   background-color: var(--bg-primary);
 }
+
+#root {
+  display: grid;
+  grid-template-rows: max-content auto max-content;
+
+  height: 100vh;
+}

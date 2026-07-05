@@ -16,7 +16,7 @@ export default function Menu({setForm}) {
             <h1>Resume Maker</h1>
             <p>Build a clean, professional resume in minutes. Just fill in a few forms and we'll do the formatting.</p>
              
-            <Button text={'Get Started'} type={'next'} onClick={startedClicked}/>
+            <Button text={'Get Started'} type={'next'} onClick={startedClicked} type={'continue'} active={true}/>
 
             <h4>No sign-up required</h4>
         </main>

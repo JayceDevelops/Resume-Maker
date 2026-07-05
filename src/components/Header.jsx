@@ -16,7 +16,7 @@ export default function Header({type, step, text}) {
         actives = [true, true, true, false];
     }
     else {
-
+        actives = [true, true, true, true];
     }
 
     return (
