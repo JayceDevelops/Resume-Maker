@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import '../styles/Footer.css';
 import Button from './Button';
 
 export default function Footer({data, form, setForm}) {
@@ -33,9 +32,8 @@ export default function Footer({data, form, setForm}) {
         }
     };
 
-
     return (
-        <footer>
+        <footer className='flex justify-between items-end pr-10 pl-10 mb-10'>
             <Button text={'Back'} type={'back'} onClick={backClicked} active={true}/>
             <Button text={'Continue'} type={'continue'} onClick={continueClicked} active={active}/>
         </footer>

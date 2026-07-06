@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import './App.css'
 
 import Menu from './components/Menu';
 
@@ -40,11 +39,11 @@ function App() {
     const {step, text} = STEP_MAP[form] ?? STEP_MAP.contact;
 
     return (
-      <>
+      <div className='grid grid-row-3 bg-white h-screen'>
         <Header step={step} text={text}/>
         <Form type={form} data={data} setData={setData}/>
         <Footer data={data} form={form} setForm={setForm}/>
-      </>
+      </div>
     );
   }
 }

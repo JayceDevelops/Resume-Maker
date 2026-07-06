@@ -1,5 +1,3 @@
-import '../styles/Header.css';
-
 import Bar from './Bar';
 
 export default function Header({type, step, text}) {
@@ -20,19 +18,19 @@ export default function Header({type, step, text}) {
     }
 
     return (
-        <header>
-            <div className='text'>
-                <h1>{text}</h1>
+        <header className='flex flex-row items-start justify-between pt-8'>
+            <div className='flex items-center justify-center gap-1 pl-10'>
+                <h1 className='items-center text-5xl font-bold'>{text}</h1>
             </div>
 
-            <div className="progress">
-                <div className="bars">
+            <div className="flex flex-col items-end pr-10">
+                <div className="flex items-center justify-center gap-5">
                     <Bar active={actives[0]}/>
                     <Bar active={actives[1]}/>
                     <Bar active={actives[2]}/>
                     <Bar active={actives[3]}/>
                 </div>
-                <h3>Step {step} of 4</h3>
+                <h3 className='font-semibold text-sm text-slate-600 pt-2'>Step {step} of 4</h3>
             </div>
         </header>
     );

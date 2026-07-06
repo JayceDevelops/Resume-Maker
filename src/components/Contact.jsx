@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import '../styles/Contact.css';
 import Input from './Input';
 
 export default function Contact({data, setData}) {
@@ -148,8 +147,8 @@ export default function Contact({data, setData}) {
 
 
     return (
-        <div className="contactHolder">
-            <form className='contact'>
+        <div className="flex items-center justify-center w-full">
+            <form className='grid grid-cols-2 gap-15 w-400'>
                 <Input lblText={'First Name'} value={FName} placeholder={'John'} onChange={fNameChange} onBlur={validateFName} errorText={FNameError}/>
                 <Input lblText={'Last Name'} value={LName} placeholder={'Smith'} onChange={lNameChange} onBlur={validateLName} errorText={LNameError}/>
                 <Input lblText={'Email'} value={Email} placeholder={'name@email.com'} onChange={emailChange} onBlur={validateEmail} errorText={EmailError}/>

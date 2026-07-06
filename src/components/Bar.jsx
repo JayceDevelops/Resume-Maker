@@ -1,14 +1,7 @@
-import '../styles/Bar.css';
-
 export default function Bar({active}){
 
-    let classStatus = '';
-    if (active){
-        classStatus = 'bar active';
-    }
-    else {
-        classStatus = 'bar';
-    }
+    let color = active ? 'bg-indigo-600' : 'bg-slate-500';
+    let classStatus = `${color} p-0.75 w-40 rounded-xl`;
     
     return (
         <div className={classStatus}></div>
