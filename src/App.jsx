@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { use, useState } from 'react'
 
 import Menu from './components/Menu';
 
@@ -25,9 +25,26 @@ function App() {
     linkedin: '',
     website: '',
     github: '',
-    education: [],
+    education: [{
+      entry: 1,
+      school: '',
+      degree: '',
+      fos: '',
+      start: '',
+      end: '',
+      gpa: ''
+    },
+  ],
     experience: []
   });
+
+  let active = data.fName !== '' && data.lName !== '' && data.email !== '' && data.phone !== '';
+
+  if (form === 'education') {
+    active = data.education.every(entry =>
+      entry.school !== '' && entry.degree !== '' && entry.fos !== '' && entry.start !== '' && entry.end !== ''
+    );
+  }
 
   if (form === 'start'){
     return (
@@ -39,10 +56,10 @@ function App() {
     const {step, text} = STEP_MAP[form] ?? STEP_MAP.contact;
 
     return (
-      <div className='grid grid-row-3 bg-slate-200 h-screen'>
+      <div className='flex flex-col justify-between bg-slate-200 min-h-screen'>
         <Header step={step} text={text}/>
         <Form type={form} data={data} setData={setData}/>
-        <Footer data={data} form={form} setForm={setForm}/>
+        <Footer data={data} form={form} setForm={setForm} active={active}/>
       </div>
     );
   }

@@ -1,11 +1,13 @@
+import { act } from 'react';
 import Arrow from '../assets/RightArrow.svg'
 
 export default function Button({text, type, onClick, active}) {
 
     let bgColor = active ? 'bg-indigo-600' : 'bg-slate-500';
+    let pointerEvents = active ? 'pointer-events-auto' : 'pointer-events-none';
     let hover = active ? 'cursor-pointer hover:-translate-y-1 hover:shadow-[0_6px_16px_rgba(0,0,0,0.4)] active:shadow-[0_2px_6px_rgba(0,0,0,0.2)] transition-all' : '';
 
-    let className = `flex justify-center items-center gap-1 p-1.5 w-50 border-none rounded-xl font-bold ${bgColor} shadow-grey-100 text-slate-100 ${hover}`;
+    let className = `flex justify-center items-center gap-1 p-1.5 w-50 border-none rounded-xl font-bold ${bgColor} shadow-grey-100 text-slate-100 ${hover} ${pointerEvents}`;
 
     if (type === 'continue'){
         return (

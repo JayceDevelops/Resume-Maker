@@ -1,16 +1,31 @@
+import AddButton from "./AddButton";
 import EducationForm from "./EducationForm";
 
 export default function Education({data, setData}){
 
-    let entry = data.education.length;
+    const addSchool = () => {
+        
+        const entry = data.education.length + 1;
+        
+        const newSchool = {entry: entry, school: '', degree: '', fos: '', start: '', end: '', gpa: ''};
+        setData({...data, education: [...data.education, newSchool]});
+    };
 
-    if (entry === 0){
-        entry = 1;
+    const deleteSchool = (index) => {
+        const updatedEducation = data.education
+        .filter((_, i) => i !== index)
+        .map((entry, i) => ({...entry, entry: i + 1}));
+        setData({...data, education: updatedEducation});
     }
 
     return (
-        <div className="flex flex-col items-center justify-center">
-            <EducationForm data={data} setData={setData} entry={entry}/>
+        <div className="flex flex-col items-center justify-center gap-10" >
+            {data.education.map(Entry => {
+                return (
+                    <EducationForm key={Entry.entry} educationObject={Entry} onClick={() => deleteSchool(Entry.entry)}/>
+                );
+            })}
+            <AddButton text={'Add another school'} onClick={addSchool}/>
         </div>
     );
 }

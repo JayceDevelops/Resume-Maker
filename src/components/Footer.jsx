@@ -1,9 +1,7 @@
 import { useState } from 'react';
 import Button from './Button';
 
-export default function Footer({data, form, setForm}) {
-
-    const active = data.fName !== '' && data.lName !== '' && data.email !== '' && data.phone !== '';
+export default function Footer({data, form, setForm, active}) {
 
     const continueClicked = () => {
         if (form === 'contact'){

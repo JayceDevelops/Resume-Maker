@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Input from './Input';
 
 export default function Contact({data, setData}) {
-    
+
     const [FName, setFName] = useState(data.fName);
     const [LName, setLName] = useState(data.lName);
     const [Email, setEmail] = useState(data.email);
