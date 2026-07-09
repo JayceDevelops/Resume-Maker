@@ -15,14 +15,22 @@ export default function Education({data, setData}){
         const updatedEducation = data.education
         .filter((_, i) => i !== index)
         .map((entry, i) => ({...entry, entry: i + 1}));
+        
         setData({...data, education: updatedEducation});
     }
 
     return (
         <div className="flex flex-col items-center justify-center gap-10" >
-            {data.education.map(Entry => {
+            {data.education.map((Entry, index) => {
                 return (
-                    <EducationForm key={Entry.entry} educationObject={Entry} onClick={() => deleteSchool(Entry.entry)}/>
+                    <EducationForm 
+                        key={crypto.randomUUID()} 
+                        educationObject={Entry} 
+                        index={index}
+                        data={data}
+                        setData = {setData}
+                        onDelete={() => deleteSchool(index)}
+                    />
                 );
             })}
             <AddButton text={'Add another school'} onClick={addSchool}/>
