@@ -36,7 +36,16 @@ function App() {
         gpa: ''
       },
     ],
-    experience: []
+    experience: [
+      {
+        entry: 1,
+        company: '',
+        title: '',
+        start: '',
+        end: '',
+        description: ''
+      }
+    ]
   });
 
   let active = data.fName !== '' && data.lName !== '' && data.email !== '' && data.phone !== '';
