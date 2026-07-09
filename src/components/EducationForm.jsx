@@ -107,7 +107,10 @@ export default function EducationForm({educationObject, index, data, setData, on
     return (
         <div className="border-2 p-10 rounded-xl border-indigo-300" >
             <div className="flex justify-between w-300 pb-5">
-                <h1 className="text-xl font-semibold text-slate-600">Entry {educationObject.entry}</h1>
+                <div className="flex gap-2 text-xl font-semibold text-slate-500">
+                    <h1>Entry</h1>
+                    <h1 className="text-slate-900">{educationObject.entry}</h1>
+                </div>
                 <button className={buttonStyle} onClick={onDelete}>Delete</button>
             </div>
             <form className="grid grid-cols-2 gap-15 w-300">
