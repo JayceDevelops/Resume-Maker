@@ -18,9 +18,9 @@ export default function Header({type, step, text}) {
     }
 
     return (
-        <header className='flex flex-row items-start justify-between pt-8 mb-5'>
+        <header className='flex flex-row items-start justify-between pt-8 mb-10'>
             <div className='flex items-center justify-center gap-1 pl-10'>
-                <h1 className='items-center text-5xl font-bold'>{text}</h1>
+                <h1 className='items-center text-6xl font-semibold font-sans'>{text}</h1>
             </div>
 
             <div className="flex flex-col items-end pr-10">
