@@ -25,16 +25,17 @@ function App() {
     linkedin: '',
     website: '',
     github: '',
-    education: [{
-      entry: 1,
-      school: '',
-      degree: '',
-      fos: '',
-      start: '',
-      end: '',
-      gpa: ''
-    },
-  ],
+    education: [
+      {
+        entry: 1,
+        school: '',
+        degree: '',
+        fos: '',
+        start: '',
+        end: '',
+        gpa: ''
+      },
+    ],
     experience: []
   });
 
