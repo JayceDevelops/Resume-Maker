@@ -38,6 +38,7 @@ function App() {
     ],
     experience: [
       {
+        id: crypto.randomUUID(),
         entry: 1,
         company: '',
         title: '',
@@ -53,6 +54,11 @@ function App() {
   if (form === 'education') {
     active = data.education.every(entry =>
       entry.school !== '' && entry.degree !== '' && entry.fos !== '' && entry.start !== '' && entry.end !== ''
+    );
+  }
+  else if (form === 'experience'){
+    active = data.experience.every(entry =>
+      entry.company !== '' && entry.title !== '' && entry.start !== '' && entry.end !== '' && entry.description !== ''
     );
   }
 

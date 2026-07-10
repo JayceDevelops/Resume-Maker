@@ -38,7 +38,6 @@ export default function EducationForm({educationObject, index, data, setData, on
         const schoolRegex = /^[A-Za-z0-9À-ÿ][A-Za-z0-9À-ÿ\s.,'&-]*$/;
         if (School.length > 0 && (School.length < 3 || !schoolRegex.test(School.trim()))) {
             setSchoolError('Invalid School Name');
-            updateEntry('school', '');
         } else {
             setSchoolError('');
             updateEntry('school', School);
@@ -49,7 +48,6 @@ export default function EducationForm({educationObject, index, data, setData, on
         const degreeRegex = /^[A-Za-z0-9À-ÿ][A-Za-z0-9À-ÿ\s.,'&()-]*$/;
         if (Degree.length > 0 && (Degree.length < 2 || !degreeRegex.test(Degree.trim()))) {
             setDegreeError('Invalid Degree');
-            updateEntry('degree', '');
         } else {
             setDegreeError('');
             updateEntry('degree', Degree);
@@ -60,7 +58,6 @@ export default function EducationForm({educationObject, index, data, setData, on
         const fosRegex = /^[A-Za-z0-9À-ÿ][A-Za-z0-9À-ÿ\s.,'&()/-]*$/;
         if (FOS.length > 0 && (FOS.length < 2 || !fosRegex.test(FOS.trim()))) {
             setFOSError('Invalid Field of Study');
-            updateEntry('fos', '');
         } else {
             setFOSError('');
             updateEntry('fos', FOS);
@@ -71,7 +68,6 @@ export default function EducationForm({educationObject, index, data, setData, on
         const dateRegex = /^(Jan(uary)?|Feb(ruary)?|Mar(ch)?|Apr(il)?|May|Jun(e)?|Jul(y)?|Aug(ust)?|Sep(t|tember)?|Oct(ober)?|Nov(ember)?|Dec(ember)?)\s\d{4}$/i;
         if (Start.length > 0 && !dateRegex.test(Start.trim())) {
             setStartError('Invalid Start Date');
-            updateEntry('start', '');
         } else {
             setStartError('');
             updateEntry('start', Start);
@@ -82,7 +78,6 @@ export default function EducationForm({educationObject, index, data, setData, on
         const dateRegex = /^(Jan(uary)?|Feb(ruary)?|Mar(ch)?|Apr(il)?|May|Jun(e)?|Jul(y)?|Aug(ust)?|Sep(t|tember)?|Oct(ober)?|Nov(ember)?|Dec(ember)?)\s\d{4}$|^Present$/i;
         if (End.length > 0 && !dateRegex.test(End.trim())) {
             setEndError('Invalid End Date');
-            updateEntry('end', '');
         } else {
             setEndError('');
             updateEntry('end', End);
@@ -91,9 +86,8 @@ export default function EducationForm({educationObject, index, data, setData, on
 
     const validateGPA = () => {
         const gpaRegex = /^[0-4](\.\d{1,2})?$/;
-        if (GPA.length > 0 && (!gpaRegex.test(GPA.trim()) || parseFloat(GPA) > 4.0)) {
+        if (GPA.length > 0 && (!gpaRegex.test(GPA.trim()) || parseFloat(GPA) > 5.0)) {
             setGPAError('Invalid GPA');
-            updateEntry('gpa', '');
         } else {
             setGPAError('');
             updateEntry('gpa', GPA);
@@ -118,7 +112,7 @@ export default function EducationForm({educationObject, index, data, setData, on
                 <Input lblText={'Degree'} value={Degree} placeholder={'Bachelors of Science'} onChange={degreeChange} onBlur={validateDegree} errorText={DegreeError}/>
                 <Input lblText={'Field Of Study'} value={FOS} placeholder={'Software Engineering'} onChange={fosChange} onBlur={validateFOS} errorText={FOSError}/>
                 <Input lblText={'Start Date'} value={Start} placeholder={'Sep 2024'} onChange={startChange} onBlur={validateStart} errorText={StartError}/>
-                <Input lblText={'End Date'} value={End} placeholder={'Jun 2028'} onChange={endChange} onBlur={validateEnd} errorText={EndError}/>
+                <Input lblText={'End Date'} value={End} placeholder={'Present'} onChange={endChange} onBlur={validateEnd} errorText={EndError}/>
                 <Input lblText={'GPA (Optional)'} value={GPA} placeholder={'3.8'} onChange={gpaChange} onBlur={validateGPA} errorText={GPAError}/>
             </form>
         </div>

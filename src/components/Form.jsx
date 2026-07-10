@@ -1,5 +1,6 @@
 import Contact from './Contact';
 import Education from './Education';
+import Experience from './Experience';
 
 export default function Form({type, data, setData}) {
 
@@ -12,5 +13,10 @@ export default function Form({type, data, setData}) {
         return (
             <Education data={data} setData={setData}/>
         );
+    }
+    else if (type === 'experience'){
+        return (
+            <Experience data={data} setData={setData}/>
+        ); 
     }
 }
