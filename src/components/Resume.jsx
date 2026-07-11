@@ -4,13 +4,43 @@ import LinkedIn from '../assets/linkedin.svg';
 import Website from '../assets/Website.svg';
 import Github from '../assets/Github.svg';
 
+import { useRef } from 'react';
+import html2canvas from 'html2canvas-pro';
+import { jsPDF } from "jspdf";
+
 export default function Resume({data}){
     
     let educationClassName = data.education[0].gpa ? 'ml-37 font-semibold' : 'ml-37 font-semibold mb-5';
 
+    const printRef = useRef(null);
+
+    const handleDownload = async () => {
+        const element = printRef.current;
+
+        if (!element) {
+            return;
+        }
+
+        const canvas = await html2canvas(element);
+        const dataCanvas = canvas.toDataURL('image/png');
+
+        const pdf = new jsPDF({
+            orientation: "portrait",
+            unit: 'px',
+            format: 'a4'
+        });
+
+        const pngProps = pdf.getImageProperties(dataCanvas);
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = (pngProps.height * pdfWidth) / pngProps.width;
+
+        pdf.addImage(dataCanvas, 'PNG', 0, 0, pdfWidth, pdfHeight);
+        pdf.save('Resume.pdf');
+    }
+
     return (
-        <div className="flex flex-col items-center justify-center gap-5 tracking-wider">
-            <div className="flex flex-col shadow-[0_20px_50px_-12px_rgba(0,0,0,0.35)] w-5xl font-Sans p-10">
+        <div ref={printRef} className="flex flex-col items-center justify-center gap-5 tracking-wider">
+            <div className="flex flex-col shadow-[0_20px_50px_-12px_rgba(0,0,0,0.35)] w-475 font-Sans p-10 bg-white">
 
                 {/* Name */}
                 <h1 className="font-bold text-3xl w-full text-center mb-1">{data.fName} {data.lName}</h1>
@@ -125,6 +155,7 @@ export default function Resume({data}){
                     }
                 })}
             </div>
+            <button className='bg-indigo-600 p-3 w-255 rounded-xl text-white font-bold text-xl cursor-pointer' onClick={handleDownload}>Save As PDF</button>
         </div>
     );
 }
