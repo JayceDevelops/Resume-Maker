@@ -6,6 +6,8 @@ import Github from '../assets/Github.svg';
 
 export default function Resume({data}){
     
+    let educationClassName = data.education[0].gpa ? 'ml-37 font-semibold' : 'ml-37 font-semibold mb-5';
+
     return (
         <div className="flex flex-col items-center justify-center gap-5 tracking-wider">
             <div className="flex flex-col shadow-[0_20px_50px_-12px_rgba(0,0,0,0.35)] w-5xl font-Sans p-10">
@@ -53,7 +55,7 @@ export default function Resume({data}){
                 
                 {/* Portfolio Information */}
                 {data.website || data.github ? 
-                    <div className="flex flex-row items-center justify-center gap-5 font-light mt-2">
+                    <div className="flex flex-row items-center justify-center gap-5 font-light mt-2 mb-5">
                         
                         {/* Website */}
                         {data.website 
@@ -87,6 +89,41 @@ export default function Resume({data}){
                     ''
                 }
 
+                {/* Education Information */}
+                <div className='flex items-center gap-10'>
+                    <h1 className='font-bold text-xl' >Education:</h1>
+                    <div className='flex justify-between w-full'>
+                        <h1 className='font-semibold'>{data.education[0].school}</h1>
+                        <h1>{data.education[0].start} - {data.education[0].end}</h1>
+                    </div>
+                </div>
+
+                
+                <div className={educationClassName}>{data.education[0].degree} - {data.education[0].fos}</div>
+
+                {data.education[0].gpa ? <div className='ml-37 font-semibold mb-5'>GPA - {data.education[0].gpa}</div> : ''}
+
+                {data.education.map((entry, index) => {
+                    
+                    if (index > 0){
+                        educationClassName = entry.gpa ? 'ml-37 font-semibold' : 'ml-37 font-semibold mb-5';
+                        return (
+                            <>
+                                <div className='flex items-center ml-37 gap-10'>
+                                    <div className='flex justify-between w-full'>
+                                         <h1 className='font-semibold'>{entry.school}</h1>
+                                        <h1>{entry.start} - {entry.end}</h1>
+                                    </div>
+                                </div>
+
+                                
+                                <div className={educationClassName}>{entry.degree} - {entry.fos}</div>
+
+                                {entry.gpa ? <div className='ml-37 font-semibold mb-5'>GPA - {entry.gpa}</div> : ''}
+                            </>
+                        );
+                    }
+                })}
             </div>
         </div>
     );
