@@ -21,7 +21,11 @@ export default function Resume({data}){
             return;
         }
 
-        const canvas = await html2canvas(element);
+        const canvas = await html2canvas(element,
+            {
+                scale: 2,
+            }
+        );
         const dataCanvas = canvas.toDataURL('image/png');
 
         const pdf = new jsPDF({
@@ -39,8 +43,8 @@ export default function Resume({data}){
     }
 
     return (
-        <div ref={printRef} className="flex flex-col items-center justify-center gap-5 tracking-wider">
-            <div className="flex flex-col shadow-[0_20px_50px_-12px_rgba(0,0,0,0.35)] w-475 font-Sans p-10 bg-white">
+        <div className="flex flex-col items-center justify-center gap-5 tracking-wider">
+            <div ref={printRef} className="flex flex-col shadow-[0_20px_50px_-12px_rgba(0,0,0,0.35)] w-5xl font-Sans p-10 bg-white">
 
                 {/* Name */}
                 <h1 className="font-bold text-3xl w-full text-center mb-1">{data.fName} {data.lName}</h1>
@@ -155,7 +159,7 @@ export default function Resume({data}){
                     }
                 })}
             </div>
-            <button className='bg-indigo-600 p-3 w-255 rounded-xl text-white font-bold text-xl cursor-pointer' onClick={handleDownload}>Save As PDF</button>
+            <button className='bg-indigo-600 p-3 w-255 rounded-xl text-white font-bold text-xl cursor-pointer hover:-translate-y-1 hover:shadow-[0_6px_16px_rgba(0,0,0,0.4)] active:shadow-[0_2px_6px_rgba(0,0,0,0.2)] transition-all' onClick={handleDownload}>Save As PDF</button>
         </div>
     );
 }
