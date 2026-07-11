@@ -130,6 +130,18 @@ export default function Contact({data, setData}) {
         }
     };
 
+    const validatePortfolio = () => {
+        const portfolioRegex = /^(https?:\/\/)?(www\.)?[a-zA-Z0-9-]+\.[a-zA-Z]{2,}(\/[a-zA-Z0-9-._~:/?#[\]@!$&'()*+,;=]*)?$/;
+
+        if (Portfolio.length > 0 && !portfolioRegex.test(Portfolio.trim())) {
+            setPortfolioError('Invalid Website URL');
+            setData({ ...data, website: '' });
+        } else {
+            setPortfolioError('');
+            setData({ ...data, website: Portfolio });
+        }
+    };
+
     const validateGithub = () => {
         const githubRegex = /^(https?:\/\/)?(www\.)?github\.com\/[a-zA-Z0-9](?:-?[a-zA-Z0-9]){0,38}\/?$/;
 
@@ -155,7 +167,7 @@ export default function Contact({data, setData}) {
                 <Input lblText={'Phone'} value={Phone} placeholder={'(123) 456-7890'} onChange={phoneChange} onBlur={validatePhone} errorText={PhoneError}/>
                 <Input lblText={'Location (optional)'} value={Location} placeholder={'Portland, OR'} onChange={locationChange} onBlur={validateLocation} errorText={LocationError}/>
                 <Input lblText={'LinkedIn (optional)'} value={LinkedIn} placeholder={'linkedin.com/in/johnsmith'} onChange={linkedInChange} onBlur={validateLinkedIn} errorText={LinkedInError}/>
-                <Input lblText={'Portfolio (optional)'} value={Portfolio} placeholder={'johnsmith.com'} onChange={portfolioChange} errorText={PortfolioError}/>
+                <Input lblText={'Portfolio (optional)'} value={Portfolio} placeholder={'johnsmith.com'} onChange={portfolioChange} onBlur={validatePortfolio} errorText={PortfolioError}/>
                 <Input lblText={'Github (optional)'} value={Github} placeholder={'github.com/johnsmith'} onChange={githubChange} onBlur={validateGithub} errorText={GithubError}/>
             </form>
         </div>
