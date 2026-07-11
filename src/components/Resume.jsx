@@ -8,7 +8,7 @@ export default function Resume({data}){
     
     return (
         <div className="flex flex-col items-center justify-center gap-5 tracking-wider">
-            <div className="flex flex-col shadow-[0_20px_50px_-12px_rgba(0,0,0,0.35)] border-1 border-slate-400 w-5xl font-Sans p-10">
+            <div className="flex flex-col shadow-[0_20px_50px_-12px_rgba(0,0,0,0.35)] w-5xl font-Sans p-10">
 
                 <h1 className="font-bold text-3xl w-full text-center mb-1">{data.fName} {data.lName}</h1>
                 {data.location ? <h1 className="font-semibold text-sm w-full text-center mb-5">{data.location}</h1> : ''}
@@ -78,7 +78,6 @@ export default function Resume({data}){
                 }
 
             </div>
-            <button className="border-1 p-2 w-5xl">Save Resume As PDF</button>
         </div>
     );
 }
