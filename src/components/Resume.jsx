@@ -158,6 +158,44 @@ export default function Resume({data}){
                         );
                     }
                 })}
+
+                {/* Work Experience */}
+                <div className='flex items-center gap-8'>
+                    <h1 className='font-bold text-xl'>Experience:</h1>
+                    <div className='flex justify-between w-full'>
+                        <h1 className='font-semibold'>{data.experience[0].company}</h1>
+                        <h1>{data.experience[0].start} - {data.experience[0].end}</h1>
+                    </div>
+                </div>
+
+                
+                <div className='ml-37 font-semibold'>{data.experience[0].title}</div>
+
+                <div className='ml-37 font-light mb-5'><span className='font-semibold'>Description:</span> {data.experience[0].description}</div>
+
+                {data.experience.map((entry, index) => {
+                    
+                    if (index > 0){
+                        return (
+                            <>
+                                <div className='flex items-center ml-37 gap-10'>
+                                    <div className='flex justify-between w-full'>
+                                         <h1 className='font-semibold'>{entry.company}</h1>
+                                        <h1>{entry.start} - {entry.end}</h1>
+                                    </div>
+                                </div>
+
+                                
+                                <div className='ml-37 font-semibold'>{entry.title}</div>
+
+                                <div className='ml-37 font-light mb-5'><span className='font-semibold'>Description:</span> {entry.description}</div>
+
+                                
+                            </>
+                        );
+                    }
+                })}
+
             </div>
             <button className='bg-indigo-600 p-3 w-255 rounded-xl text-white font-bold text-xl cursor-pointer hover:-translate-y-1 hover:shadow-[0_6px_16px_rgba(0,0,0,0.4)] active:shadow-[0_2px_6px_rgba(0,0,0,0.2)] transition-all' onClick={handleDownload}>Save As PDF</button>
         </div>
