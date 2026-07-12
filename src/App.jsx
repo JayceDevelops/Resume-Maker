@@ -1,4 +1,4 @@
-import { use, useState } from 'react'
+import { use, useState, useEffect } from 'react'
 
 import Menu from './components/Menu';
 
@@ -13,41 +13,41 @@ const STEP_MAP = {
   complete: { step: 4, text: 'Your resume is ready' },
 };
 
-function App() {
-  const [form, setForm] = useState('start');
+const DEFAULT_DATA = {
+  fName: '',
+  lName: '',
+  email: '',
+  phone: '',
+  location: '',
+  linkedin: '',
+  website: '',
+  github: '',
+  education: [
+    { entry: 1, school: '', degree: '', fos: '', start: '', end: '', gpa: '' },
+  ],
+  experience: [
+    { id: crypto.randomUUID(), entry: 1, company: '', title: '', start: '', end: '', description: '' }
+  ]
+};
 
-  const [data, setData] = useState({
-    fName: '',
-    lName: '',
-    email: '',
-    phone: '',
-    location: '',
-    linkedin: '',
-    website: '',
-    github: '',
-    education: [
-      {
-        entry: 1,
-        school: '',
-        degree: '',
-        fos: '',
-        start: '',
-        end: '',
-        gpa: ''
-      },
-    ],
-    experience: [
-      {
-        id: crypto.randomUUID(),
-        entry: 1,
-        company: '',
-        title: '',
-        start: '',
-        end: '',
-        description: ''
-      }
-    ]
+function App() {
+  const [form, setForm] = useState(() => {
+    const saved = localStorage.getItem('Form');
+    return saved ? JSON.parse(saved) : 'start';
   });
+
+  const [data, setData] = useState(() => {
+    const saved = localStorage.getItem('Data');
+    return saved ? JSON.parse(saved) : DEFAULT_DATA;
+  });
+
+  useEffect(() => {
+    localStorage.setItem('Form', JSON.stringify(form));
+  }, [form]);
+
+  useEffect(() => {
+    localStorage.setItem('Data', JSON.stringify(data));
+  }, [data]);
 
   let active = data.fName !== '' && data.lName !== '' && data.email !== '' && data.phone !== '';
 
