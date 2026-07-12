@@ -1,4 +1,4 @@
-import Phone from '../assets/Phone.svg';
+import Phone from '../assets/phone.svg';
 import Email from '../assets/Email.svg';
 import LinkedIn from '../assets/linkedin.svg';
 import Website from '../assets/Website.svg';
