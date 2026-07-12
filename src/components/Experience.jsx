@@ -19,7 +19,7 @@ export default function Experience({data, setData}) {
     }
     
     return (
-        <div className="flex flex-col items-center justify-center gap-10" >
+        <div className="flex flex-col items-center justify-center gap-6 sm:gap-10 px-4 sm:px-6 w-full">
             {data.experience.map((Entry, index) => {
                 return (
                     <ExperienceForm 

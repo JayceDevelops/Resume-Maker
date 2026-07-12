@@ -159,8 +159,8 @@ export default function Contact({data, setData}) {
 
 
     return (
-        <div className="flex items-center justify-center w-full">
-            <form className='grid grid-cols-2 gap-15 w-400'>
+        <div className="flex items-center justify-center w-full px-4 sm:px-6">
+            <form className='grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10 md:gap-25 w-full max-w-7xl mb-5'>
                 <Input lblText={'First Name'} value={FName} placeholder={'John'} onChange={fNameChange} onBlur={validateFName} errorText={FNameError}/>
                 <Input lblText={'Last Name'} value={LName} placeholder={'Smith'} onChange={lNameChange} onBlur={validateLName} errorText={LNameError}/>
                 <Input lblText={'Email'} value={Email} placeholder={'name@email.com'} onChange={emailChange} onBlur={validateEmail} errorText={EmailError}/>

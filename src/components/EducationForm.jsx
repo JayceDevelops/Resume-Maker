@@ -99,15 +99,15 @@ export default function EducationForm({educationObject, index, data, setData, on
     const buttonStyle = `text-l font-semibold text-white bg-red-400 px-2 rounded-3xl cursor-pointer ${hidden}`;
 
     return (
-        <div className="border-2 p-10 rounded-xl border-indigo-300" >
-            <div className="flex justify-between w-300 pb-5">
+        <div className="border-2 p-4 sm:p-6 md:p-10 rounded-xl border-indigo-300 w-full max-w-7xl">
+            <div className="flex justify-between w-full pb-5">
                 <div className="flex gap-2 text-xl font-semibold text-slate-500">
                     <h1>Entry</h1>
                     <h1 className="text-slate-900">{educationObject.entry}</h1>
                 </div>
                 <button className={buttonStyle} onClick={onDelete}>Delete</button>
             </div>
-            <form className="grid grid-cols-2 gap-15 w-300">
+            <form className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10 md:gap-15 w-full">
                 <Input lblText={'School'} value={School} placeholder={'University of Oregon'} onChange={schoolChange} onBlur={validateSchool} errorText={SchoolError}/>
                 <Input lblText={'Degree'} value={Degree} placeholder={'Bachelors of Science'} onChange={degreeChange} onBlur={validateDegree} errorText={DegreeError}/>
                 <Input lblText={'Field Of Study'} value={FOS} placeholder={'Software Engineering'} onChange={fosChange} onBlur={validateFOS} errorText={FOSError}/>

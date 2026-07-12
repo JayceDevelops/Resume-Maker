@@ -18,13 +18,13 @@ export default function Header({type, step, text}) {
     }
 
     return (
-        <header className='flex flex-row items-start justify-between pt-8 mb-10'>
-            <div className='flex items-center justify-center gap-1 pl-10'>
-                <h1 className='items-center text-6xl font-semibold font-sans'>{text}</h1>
+        <header className='flex flex-col sm:flex-row items-center sm:items-start justify-between pt-6 sm:pt-8 mb-6 sm:mb-10 px-4 sm:px-0 gap-4 sm:gap-0'>
+            <div className='flex items-center justify-center gap-1 sm:pl-10'>
+                <h1 className='text-center sm:text-left text-3xl sm:text-4xl md:text-6xl font-semibold font-sans'>{text}</h1>
             </div>
 
-            <div className="flex flex-col items-end pr-10">
-                <div className="flex items-center justify-center gap-5">
+            <div className="flex flex-col items-center sm:items-end sm:pr-10">
+                <div className="flex items-center justify-center gap-2 sm:gap-5">
                     <Bar active={actives[0]}/>
                     <Bar active={actives[1]}/>
                     <Bar active={actives[2]}/>

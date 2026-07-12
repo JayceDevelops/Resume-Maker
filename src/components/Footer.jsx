@@ -35,7 +35,7 @@ export default function Footer({data, form, setForm, active}) {
     }
 
     return (
-        <footer className='flex justify-between items-end pr-10 pl-10 mb-10'>
+        <footer className='flex justify-between items-end px-4 sm:px-6 md:px-10 mb-6 sm:mb-10'>
             <Button text={'Back'} type={'back'} onClick={backClicked} active={true}/>
             {form === 'complete' ? '' : <Button text={'Continue'} type={'continue'} onClick={continueClicked} active={active}/>}
             

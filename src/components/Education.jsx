@@ -20,7 +20,7 @@ export default function Education({data, setData}){
     }
 
     return (
-        <div className="flex flex-col items-center justify-center gap-10" >
+        <div className="flex flex-col items-center justify-center gap-6 sm:gap-10 px-4 sm:px-6 w-full">
             {data.education.map((Entry, index) => {
                 return (
                     <EducationForm 
