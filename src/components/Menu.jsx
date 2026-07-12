@@ -16,7 +16,7 @@ export default function Menu({setForm}) {
              
             <Button text={'Get Started'} type={'next'} onClick={startedClicked} type={'continue'} active={true}/>
 
-            <h4 className='text-gray-500 pt-2 font-extralight sm:pt-5'>No sign-up required</h4>
+            <h4 className='text-gray-500 pt-2 pr-5 pl-5 font-extralight sm:pt-5'>No sign-up required</h4>
         </main>
     );
 };
